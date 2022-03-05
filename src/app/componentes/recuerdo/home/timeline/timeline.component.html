@@ -1,0 +1,36 @@
+<hr>
+<h2 style="color: black; text-align: center;">
+    Recuerdos</h2>
+<div style="margin-right: 1em;" *ngIf="yearSelected != null">
+    <!-- Vertical Timeline -->
+    <section id="conference-timeline">
+        <div *ngFor="let item of arrayTimeLine">
+            <div class="timeline-start"> {{yearSelected.year}} </div>
+        </div>
+        <div class="conference-center-line"></div>
+        <div class="conference-timeline-content">
+            <!-- Article -->
+            <div class="timeline-article" *ngFor="let mes of yearSelected.meses; let i = index">
+                <div class="content-left-container" *ngIf="(i + 1) % 2 == 0">
+                    <div class="content-left puntero" (click)="cerrarModal(); selectMes(mes.archivo)">
+                        <p>{{mes.descripcion}} <span class="article-number">{{mes.numero}}</span></p>
+                    </div>
+                    <span class="timeline-author"> {{mes.nombre}} </span>
+                </div>
+
+                <div class="content-right-container" *ngIf="(i+1) %2 != 0">
+                    <div class="content-right puntero" (click)="cerrarModal(); selectMes(mes.archivo)">
+                        <p>{{mes.descripcion}} <span class="article-number">{{mes.numero}}</span></p>
+                    </div>
+                    <span class="timeline-author">{{mes.nombre}} </span>
+                </div>
+                <div class="meta-date">
+                    <span class="date puntero" (click)="cerrarModal(); selectMes()">{{mes.abreviatura}} </span>
+                </div>
+            </div>
+            <!-- // Article -->
+        </div>
+        <div *ngIf="position+1 == this.arrayTimeLine.length" class="timeline-end">End</div>
+    </section>
+    <!-- // Vertical Timeline -->
+</div>

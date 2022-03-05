@@ -1,0 +1,22 @@
+<h2 class="closeTxt puntero" (click)="closeModal()">Cerrar</h2>
+
+<div class="closeBtn puntero" (click)="closeModal()">
+    <h2>^</h2>
+</div>
+
+<div style="background: #020520;">
+
+    <ng-container *ngFor="let archivo of mesSeleccionado">
+        <figure *ngIf="archivo.type == 1">
+            <img src="{{archivo.url}}" width="1000" height="1000" />
+        </figure>
+
+        <figure *ngIf="archivo.type == 2">
+            <video controls>
+                <source src="{{archivo.url}}" type="video/mp4">
+                Your browser does not support HTML video.
+              </video>
+        </figure>
+    </ng-container>
+
+</div>

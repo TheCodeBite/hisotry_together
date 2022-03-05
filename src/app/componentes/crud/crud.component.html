@@ -1,0 +1,56 @@
+<label>Año: </label>
+<input [(ngModel)]="year" type="number" placeholder="2021">
+<button (click)="crearYear()">Crear Año</button>
+
+<div style="margin-top: 2em;">
+
+    <label>Seleccione Año</label>
+    <select [ngModel]="yearSeleccionado" (ngModelChange)="SelectIdYear($event)" style="width: 100%; margin-bottom: 2em;">
+            <option *ngFor="let itemYear of arrayYears" [ngValue]="itemYear"> {{itemYear.year}}</option>
+        </select>
+
+    <label>Album: </label>
+    <input [(ngModel)]="albumName" type="text" value=2021 placeholder="nombre de album">
+    <button (click)="crearAlbum()">Crear Album</button>
+</div>
+
+<br>
+<p></p>
+<hr>
+<h3 style="text-align: center;">Subir archivo</h3>
+
+<div class="contenedor">
+    <div class="contenedor_formulario">
+        <div>
+            <label>Seleccione Año</label>
+            <select [ngModel]="yearSeleccionado" (ngModelChange)="SelectIdYear($event)" style="width: 100%; margin-bottom: 2em;">
+            <option *ngFor="let itemYear of arrayYears" [ngValue]="itemYear"> {{itemYear.year}}</option>
+        </select>
+        </div>
+
+        <label>Seleccione album</label>
+        <select [ngModel]="albumSeleccionado" (ngModelChange)="Selectid($event)" style="width: 100%; margin-bottom: 2em;">
+            <option *ngFor="let album of arrayAlbums; let i = index" [ngValue]="i"> {{album.nombre}} - {{i}} </option>
+        </select>
+
+        <p class="download" *ngIf="finalizado">URL de descarga: <a href="{{ URLPublica }}" target="_blank">Descargar</a></p>
+        <form [formGroup]="archivoForm" (ngSubmit)="subirArchivo()">
+            <div class="file has-name is-boxed">
+                <label class="file-label">
+            <input class="file-input" type="file" formControlName="archivo" (change)="cambioArchivo($event)">
+            <span class="file-cta">
+              <span class="file-label">
+                Elegir un archivo…
+              </span>
+            </span>
+            <span class="file-name">
+              {{ mensajeArchivo }}
+            </span>
+          </label>
+            </div>
+            <hr>
+            <progress *ngIf="porcentaje > 0 && porcentaje < 100" class="progress is-large is-success" value="{{porcentaje}}" max="100">{{porcentaje}}%</progress>
+            <button [ngClass]="{'button': true, 'is-success': true, 'is-large': true, 'is-loading': porcentaje > 0 && porcentaje < 100}" [disabled]="!archivoForm.valid && (porcentaje > 0 && porcentaje < 100)">Subir archivo</button>
+        </form>
+    </div>
+</div>

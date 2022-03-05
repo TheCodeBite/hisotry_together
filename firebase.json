@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/regalo",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

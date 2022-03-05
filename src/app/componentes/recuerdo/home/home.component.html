@@ -1,0 +1,46 @@
+<div class="parallax" *ngIf="!verSlide">
+    <div class="caption" style="text-align: center; background-color: transparent;">
+        <h1>Nuestra Historia</h1>
+        <h2>Kevin & Janeth</h2>
+        <p>
+            <span>23.02.2021</span>
+        </p>
+    </div>
+</div>
+<div style="background-color: #EFE4EE;" *ngIf="!verSlide">
+    <div class="container">
+        <br>
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-6">
+                <div class="card container_foto" style="border: none !important; background-color: #EFE4EE;">
+                    <img src="../../../../assets/src/img/yo.jpg" style="border-radius: 50%;" class="card-img" alt="...">
+                    <div class="card-img-overlay">
+                    </div>
+                </div>
+                <h3 class="text-center">Kevin</h3>
+            </div>
+
+            <div class="col-sm-6 col-md-6 col-6">
+                <div class="card container_foto" style="border: none !important; background-color: #EFE4EE;">
+                    <img src="../../../../assets/src/img/amorcito.jpg" class="card-img" alt="..." style="border-radius: 50%;">
+                    <div class="card-img-overlay">
+                    </div>
+                </div>
+                <h3 class="text-center">Janeth</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-aniversario></app-aniversario>
+
+<app-timeline *ngIf="!verSlide && yearSelected" (retornaMes)="selectMes($event)" (newItemEvent)="openModal($event)" [arrayTimeLine]="arrayTimeLine" class="container"></app-timeline>
+
+<app-gallery-slide *ngIf="verSlide" [mesSeleccionado]="mesSeleccionado" (newItemEvent)="closeModal($event)"></app-gallery-slide>
+
+<div *ngIf="!verSlide" class="text-center" style="background-color: aliceblue; margin: 0;">
+    <br>
+    <h1 style=" color: black !important;">Nuestra Boda</h1>
+    <h2 style=" color: black !important;">Proximamente...</h2>
+    <br>
+</div>
